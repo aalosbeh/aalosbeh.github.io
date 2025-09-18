@@ -26,3 +26,6 @@ software engineering (AOP, runtime monitoring), HPC, and data-driven public-inte
 ### Documents
 - 📄 **CV** — [Download PDF](/assets/Anas-AlSobeh-CV.pdf)
 - 📄 **Resume** — [Download PDF](/assets/Anas-AlSobeh-Resume.pdf)
+
+### Google Scholar 
+<a href="https://scholar.google.com/citations?hl=en&user=zKwjczwAAAAJ&view_op=list_works&sortby=pubdate "> Google scholar </a>
