@@ -1,27 +1,30 @@
-# aalosbeh.github.io
+# aalosbeh.github.io — Professional Site
 
-Source for my academic website, hosted with **GitHub Pages**.
+This repository powers **https://aalosbeh.github.io** using the **minima** theme.
+Content is data-driven via `_data/` so you can update lists without touching HTML.
 
-## Local editing
-This site uses the GitHub Pages–supported Jekyll theme **minima**. You can edit Markdown files directly in the repo. GitHub builds & serves the site automatically—no local Ruby setup required.
+## Quick edits
+- **News**: edit `_data/news.yml`
+- **Publications**: edit `_data/pubs.yml`
+- **Teaching**: edit `_data/teaching.yml`
+- **Projects**: edit `_data/projects.yml`
+- **Service**: edit `_data/service.yml`
+- **Styles**: edit `assets/css/style.scss`
 
-## Structure
+## Add a new publication
+Open `_data/pubs.yml` and append:
+```yml
+- year: 2025
+  title: "Your Paper Title"
+  venue: "Journal/Conference"
+  authors: "First Author, Second Author, Anas M. R. AlSobeh"
+  pdf: "https://... (optional)"
+  doi: "https://doi.org/... (optional)"
+  code: "https://github.com/... (optional)"
 ```
-.
-├─ _config.yml        # Site config (title, theme, links)
-├─ index.md           # Home page
-├─ cv.md              # CV page
-├─ resume.md          # Resume page
-└─ assets/
-   ├─ Anas-AlSobeh-CV.pdf
-   └─ Anas-AlSobeh-Resume.pdf
-```
 
-## Publishing
-1. Push to the `main` branch of this repo.
-2. In **Settings → Pages**, set **Build and deployment** to **Deploy from branch**; choose **Branch: main / root**.
-3. Your site will be available at **https://aalosbeh.github.io**.
-
----
-
-© 2025 Anas M. R. AlSobeh
+## Build & publish
+GitHub Pages builds automatically on commit. Make sure in **Settings → Pages**:
+- Source: **Deploy from branch**
+- Branch: **main** / **root**
+Then visit **https://aalosbeh.github.io**.

@@ -1,0 +1,45 @@
+---
+---
+// Import minima defaults then extend
+@import "minima";
+
+// Simple tweaks
+.page-content {
+  padding: 2rem 0 4rem 0;
+}
+
+.hero {
+  background: #f7f7f7;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+
+.badge {
+  display: inline-block;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: .15rem .6rem;
+  font-size: .85rem;
+  margin-right: .3rem;
+  text-decoration: none;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 1rem;
+  background: #fff;
+}
+
+small.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
