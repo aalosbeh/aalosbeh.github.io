@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aalosbeh.github.io/sitemap.xml
+

@@ -1,0 +1,82 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Dr. Anas M.R. AlSobeh",
+  "givenName": "Anas",
+  "familyName": "AlSobeh",
+  "honorificPrefix": "Dr.",
+  "jobTitle": "Assistant Professor",
+  "description": "Assistant Professor and Program Coordinator specializing in AI-driven cybersecurity, machine learning, and software engineering",
+  "url": "https://aalosbeh.github.io/",
+  "image": "https://aalosbeh.github.io/profile.jpg",
+  "email": "anas.alsobeh@siu.edu",
+  "telephone": "+1-618-713-7451",
+  "sameAs": [
+    "https://orcid.org/0000-0002-1506-7924",
+    "https://www.researchgate.net/profile/Anas-Alsobeh/research",
+    "https://scholar.google.com"
+  ],
+  "worksFor": {
+    "@type": "EducationalOrganization",
+    "name": "Southern Illinois University Carbondale",
+    "url": "https://siu.edu",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "School of Computing",
+      "addressLocality": "Carbondale",
+      "addressRegion": "IL",
+      "postalCode": "62901",
+      "addressCountry": "USA"
+    }
+  },
+  "alumniOf": [
+    {
+      "@type": "EducationalOrganization",
+      "name": "Utah State University",
+      "degree": "Ph.D. in Computer Science"
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "Yarmouk University",
+      "degree": "M.Sc. in Computer Information Systems"
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "Yarmouk University",
+      "degree": "B.Sc. in Computer Information Systems"
+    }
+  ],
+  "knowsAbout": [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Cybersecurity",
+    "Software Engineering",
+    "High-Performance Computing",
+    "Cloud Computing",
+    "Data Science",
+    "Deepfake Detection",
+    "Malware Detection"
+  ],
+  "award": [
+    "Best Paper Award - IACIS 2024",
+    "NSF CCMNet Travel Award - PEARC25 2025",
+    "REACH Faculty Mentor Award 2025",
+    "WiCyS Scholarship 2025"
+  ],
+  "memberOf": [
+    {
+      "@type": "Organization",
+      "name": "IEEE",
+      "membershipType": "Senior Member"
+    },
+    {
+      "@type": "Organization",
+      "name": "ACM SIGHPC"
+    },
+    {
+      "@type": "Organization",
+      "name": "Women in Cybersecurity (WiCyS)"
+    }
+  ]
+}
+
