@@ -4,7 +4,7 @@ title: Home
 ---
 
 <div class="hero">
-  <em>Pioneering AI for a Safer, More Resilient Digital World</em>
+  <em>Innovating at the Frontier of AI and Security</em>
 </div>
 
 <div class="profile-container">
