@@ -7,9 +7,16 @@ title: Home
   <em>AI, Cybersecurity, AI for resilient software, and public-interest applications.</em>
 </div>
 
-Welcome—I'm **Dr. Anas M. R. AlSobeh**, Assistant Professor & Program Coordinator at **SIU Carbondale**.
-I lead and collaborate on projects spanning AI applications, AI-driven cybersecurity (adversarial defenses, LLM safety),
-software engineering (AOP, runtime monitoring), HPC, and data-driven public-interest problems (e.g., food safety).
+<div class="profile-container">
+  <div class="profile-text">
+    Welcome—I'm **Dr. Anas M. R. AlSobeh**, Assistant Professor & Program Coordinator at **SIU Carbondale**.
+    I lead and collaborate on projects spanning AI applications, AI-driven cybersecurity (adversarial defenses, LLM safety),
+    software engineering (AOP, runtime monitoring), HPC, and data-driven public-interest problems (e.g., food safety).
+  </div>
+  <div class="profile-image">
+    <img src="/assets/images/anas.jpg" alt="Dr. Anas M. R. AlSobeh">
+  </div>
+</div>
 
 ### Highlights
 - **USDA (2024–2026)**: AI-powered detection of _Salmonella_ in onion microscopy.
