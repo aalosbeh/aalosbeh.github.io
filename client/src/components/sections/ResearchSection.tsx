@@ -57,36 +57,36 @@ export default function ResearchSection() {
   ];
 
   return (
-    <section id="research" className="py-20 bg-muted/20">
+    <section id="research" className="py-20 bg-gradient-to-b from-blue-50 to-white dark:from-blue-900/50 dark:to-gray-900">
       <div className="container">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Research</h2>
-            <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-800 dark:text-white mb-4 font-playfair">Research</h2>
+            <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-teal-400 mx-auto rounded-full mb-6"></div>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto font-roboto">
               My interdisciplinary research bridges AI-driven cybersecurity, software engineering, cloud computing, and data science, with a focus on developing innovative solutions for real-world challenges.
             </p>
           </div>
 
           {/* Research Areas */}
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold text-foreground mb-8">Research Interests</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mb-20">
+            <h3 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 font-playfair">Research Interests</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {researchAreas.map((area, index) => {
                 const Icon = area.icon;
                 return (
-                  <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <Card key={index} className="bg-white dark:bg-gray-800/50 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2 border-t-4 border-blue-500">
                     <CardHeader>
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 bg-primary/10 rounded-lg">
-                          <Icon className="text-primary" size={24} />
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="p-3 bg-blue-100 dark:bg-blue-900/50 rounded-full">
+                          <Icon className="text-blue-500 dark:text-blue-400" size={28} />
                         </div>
+                        <CardTitle className="text-xl font-montserrat font-semibold text-gray-900 dark:text-white">{area.title}</CardTitle>
                       </div>
-                      <CardTitle className="text-lg">{area.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground text-sm">{area.description}</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-base font-roboto">{area.description}</p>
                     </CardContent>
                   </Card>
                 );
@@ -95,21 +95,21 @@ export default function ResearchSection() {
           </div>
 
           {/* Current Research Projects */}
-          <div>
-            <h3 className="text-2xl font-bold text-foreground mb-8">Current Research Projects</h3>
-            <div className="space-y-6">
+          <div className="mb-20">
+            <h3 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 font-playfair">Current Research Projects</h3>
+            <div className="space-y-8">
               {currentProjects.map((project, index) => (
-                <Card key={index}>
-                  <CardContent className="pt-6">
+                <Card key={index} className="bg-white dark:bg-gray-800/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-teal-400">
+                  <CardContent className="p-6">
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                       <div className="flex-1">
-                        <h4 className="text-xl font-semibold text-foreground mb-2">{project.title}</h4>
-                        <p className="text-muted-foreground mb-3">{project.description}</p>
-                        <div className="flex flex-wrap gap-2">
-                          <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                        <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 font-montserrat">{project.title}</h4>
+                        <p className="text-gray-600 dark:text-gray-300 mb-4 font-roboto">{project.description}</p>
+                        <div className="flex flex-wrap gap-3">
+                          <span className="px-4 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 rounded-full text-sm font-medium">
                             {project.funding}
                           </span>
-                          <span className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm">
+                          <span className="px-4 py-1 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 rounded-full text-sm">
                             {project.period}
                           </span>
                         </div>
@@ -122,29 +122,29 @@ export default function ResearchSection() {
           </div>
 
           {/* Research Impact */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-            <Card>
-              <CardContent className="pt-6">
-                <div className="text-3xl font-bold text-primary mb-2">50+</div>
-                <p className="text-muted-foreground">Publications</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <Card className="bg-white dark:bg-gray-800/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <CardContent className="p-6">
+                <div className="text-4xl font-bold text-blue-500 dark:text-blue-400 mb-2 font-montserrat">50+</div>
+                <p className="text-gray-600 dark:text-gray-300 font-roboto">Publications</p>
               </CardContent>
             </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <div className="text-3xl font-bold text-primary mb-2">$3M+</div>
-                <p className="text-muted-foreground">Research Funding</p>
+            <Card className="bg-white dark:bg-gray-800/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <CardContent className="p-6">
+                <div className="text-4xl font-bold text-blue-500 dark:text-blue-400 mb-2 font-montserrat">$3M+</div>
+                <p className="text-gray-600 dark:text-gray-300 font-roboto">Research Funding</p>
               </CardContent>
             </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <div className="text-3xl font-bold text-primary mb-2">15+</div>
-                <p className="text-muted-foreground">Research Projects</p>
+            <Card className="bg-white dark:bg-gray-800/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <CardContent className="p-6">
+                <div className="text-4xl font-bold text-blue-500 dark:text-blue-400 mb-2 font-montserrat">15+</div>
+                <p className="text-gray-600 dark:text-gray-300 font-roboto">Research Projects</p>
               </CardContent>
             </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <div className="text-3xl font-bold text-primary mb-2">Q1/Q2</div>
-                <p className="text-muted-foreground">Journal Rankings</p>
+            <Card className="bg-white dark:bg-gray-800/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <CardContent className="p-6">
+                <div className="text-4xl font-bold text-blue-500 dark:text-blue-400 mb-2 font-montserrat">Q1/Q2</div>
+                <p className="text-gray-600 dark:text-gray-300 font-roboto">Journal Rankings</p>
               </CardContent>
             </Card>
           </div>

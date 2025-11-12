@@ -1,6 +1,0 @@
-- name: BactoDetect
-  blurb: YOLO-based high-performance Salmonella/E. coli detection in microscopy images.
-  link: ""
-- name: SecureCI-CD on FABRIC
-  blurb: Zero-trust CI/CD with ML-based threat detection & blockchain integrity verification.
-  link: ""
