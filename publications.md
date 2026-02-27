@@ -4,7 +4,7 @@ title: Publications
 permalink: /publications/
 ---
 
-Below is a selected list. Update `_data/pubs.yml` to add more items.
+Below is the complete publications list loaded from `_data/pubs.yml`.
 
 {% assign entries = site.data.pubs | sort: "year" | reverse %}
 {% for p in entries %}
