@@ -10,73 +10,49 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-16 bg-gradient-to-br from-background via-background to-muted/20">
-      <div className="container">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          {/* Profile Image Placeholder */}
-          <div className="flex justify-center mb-8">
-            <div className="w-40 h-40 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-6xl font-bold text-white">
-              AA
-            </div>
-          </div>
-
-          {/* Main Heading */}
-          <div className="space-y-4">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground">
-              Dr. Anas M.R. AlSobeh
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground font-medium">
-              Assistant Professor | Program Coordinator
-            </p>
-            <p className="text-lg md:text-xl text-muted-foreground">
-              Information Technology & Cybersecurity
-            </p>
-            <p className="text-base md:text-lg text-muted-foreground">
-              Southern Illinois University, Carbondale
-            </p>
-          </div>
-
-          {/* Badges */}
-          <div className="flex flex-wrap justify-center gap-3 text-sm">
-            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">
-              IEEE Senior Member
-            </span>
-            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">
-              ACM SIGHPC
-            </span>
-            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">
-              WiCyS Co-Faculty Advisor
-            </span>
-          </div>
-
-          {/* Brief Introduction */}
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Specializing in AI-driven cybersecurity, machine learning, and software engineering with over 10 years of academic and research experience. Published 50+ peer-reviewed articles and secured $3M+ in research funding.
+    <section
+      id="home"
+      className="relative min-h-screen overflow-hidden pt-16"
+    >
+      <div className="absolute inset-0 academic-hero-bg" />
+      <div className="relative container py-20 md:py-28">
+        <div className="mx-auto max-w-5xl rounded-3xl border border-primary/15 bg-card/85 p-8 text-center shadow-xl backdrop-blur-sm md:p-12">
+          <p className="mb-4 text-sm font-semibold tracking-[0.2em] text-primary uppercase">
+            School of Computing • Southern Illinois University
           </p>
 
-          {/* Key Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto pt-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary">50+</div>
-              <div className="text-muted-foreground mt-2">Publications</div>
+          <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+            Dr. Anas M.R. AlSobeh
+          </h1>
+
+          <p className="mt-4 text-lg font-medium text-muted-foreground md:text-2xl">
+            Assistant Professor | Program Coordinator
+          </p>
+          <p className="mt-2 text-base text-muted-foreground md:text-lg">
+            Information Technology & Cybersecurity
+          </p>
+
+          <div className="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="rounded-xl border border-border/70 bg-background/80 p-4">
+              <p className="text-3xl font-bold text-primary">50+</p>
+              <p className="text-sm text-muted-foreground">Peer-Reviewed Publications</p>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary">$3M+</div>
-              <div className="text-muted-foreground mt-2">Research Funding</div>
+            <div className="rounded-xl border border-border/70 bg-background/80 p-4">
+              <p className="text-3xl font-bold text-primary">$3M+</p>
+              <p className="text-sm text-muted-foreground">Research Funding</p>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary">10+</div>
-              <div className="text-muted-foreground mt-2">Years Experience</div>
+            <div className="rounded-xl border border-border/70 bg-background/80 p-4">
+              <p className="text-3xl font-bold text-primary">10+</p>
+              <p className="text-sm text-muted-foreground">Years in Academia</p>
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 pt-8">
-            <Button
-              size="lg"
-              onClick={() => scrollToSection("#research")}
-              className="gap-2"
-            >
+          <p className="mx-auto mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            Advancing secure and intelligent systems through AI-driven cybersecurity, machine learning, and software engineering research, while mentoring the next generation of computing professionals.
+          </p>
+
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Button size="lg" onClick={() => scrollToSection("#research")} className="gap-2">
               View Research
               <ArrowDown size={18} />
             </Button>
@@ -84,7 +60,7 @@ export default function HeroSection() {
               size="lg"
               variant="outline"
               onClick={() => scrollToSection("#publications")}
-              className="gap-2"
+              className="gap-2 border-primary/30"
             >
               <FileText size={18} />
               Publications
@@ -93,21 +69,26 @@ export default function HeroSection() {
               size="lg"
               variant="outline"
               onClick={() => scrollToSection("#contact")}
-              className="gap-2"
+              className="gap-2 border-primary/30"
             >
               <Mail size={18} />
               Contact
             </Button>
           </div>
 
-          {/* Scroll Indicator */}
-          <div className="pt-12 animate-bounce">
+          <div className="mt-10 flex flex-wrap justify-center gap-3 text-sm">
+            <span className="academic-badge">IEEE Senior Member</span>
+            <span className="academic-badge">ACM SIGHPC Member</span>
+            <span className="academic-badge">WiCyS Co-Faculty Advisor</span>
+          </div>
+
+          <div className="pt-10 animate-bounce">
             <button
               onClick={() => scrollToSection("#about")}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground transition-colors hover:text-primary"
               aria-label="Scroll to about section"
             >
-              <ArrowDown size={32} />
+              <ArrowDown size={30} />
             </button>
           </div>
         </div>
@@ -115,4 +96,3 @@ export default function HeroSection() {
     </section>
   );
 }
-
