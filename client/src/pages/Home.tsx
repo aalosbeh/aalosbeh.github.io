@@ -5,6 +5,7 @@ import AboutSection from "@/components/sections/AboutSection";
 import ResearchSection from "@/components/sections/ResearchSection";
 import PublicationsSection from "@/components/sections/PublicationsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import TeachingSection from "@/components/sections/TeachingSection";
 import AwardsSection from "@/components/sections/AwardsSection";
 import ContactSection from "@/components/sections/ContactSection";
 
@@ -18,6 +19,7 @@ export default function Home() {
         <ResearchSection />
         <PublicationsSection />
         <ProjectsSection />
+        <TeachingSection />
         <AwardsSection />
         <ContactSection />
       </main>
