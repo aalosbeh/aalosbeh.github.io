@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, FileText } from "lucide-react";
+import { ExternalLink, FileText, BookOpen, Award } from "lucide-react";
 
 type Publication = {
   year: number;
@@ -9,540 +9,491 @@ type Publication = {
   authors: string;
   venue: string;
   link?: string;
+  type: "journal" | "conference";
+  note?: string;
 };
 
-const publications: Publication[] = [
+const journals: Publication[] = [
   {
     year: 2026,
-    title:
-      "SiAraSent: From Features to Deep Transformers for Large-Scale Arabic Sentiment Analysis",
+    title: "BactoDetect: Real-Time Bacterial Colony Detection on Heterogeneous HPC Architectures for Scalable Food Safety Monitoring",
+    authors: "A Alsobeh, AD Rajagopala, I Alsmadi, B Al-Ahmad, A AbuGhazaleh, N Dhahir, M Rababa",
+    venue: "BDCC, Scopus Q1",
+    type: "journal",
+    note: "Submitted",
+  },
+  {
+    year: 2026,
+    title: "SiAraSent: From Features to Deep Transformers for Large-Scale Arabic Sentiment Analysis",
     authors: "O Almousa, Y Tashtoush, A AlSobeh, P Zahariev, O Darwish",
-    venue: "Big Data and Cognitive Computing 10 (2), 49",
+    venue: "Big Data and Cognitive Computing 10(2), 49",
+    type: "journal",
+    link: "https://doi.org/10.3390/bdcc10020049",
+  },
+  {
+    year: 2025,
+    title: "Proximity-Constrained Counterfactuals for Explainable Diabetic Risk Assessment",
+    authors: "MF Kabir, AM Mahakal, Y Wang, A AlSobeh, B Al-Ahmad, R Alkhawaldah",
+    venue: "Applied Computational Intelligence and Soft Computing, Wiley, Scopus Q1",
+    type: "journal",
+  },
+  {
+    year: 2025,
+    title: "AspectFL: Aspect-Oriented Programming for Trustworthy and Compliant Federated Learning Systems",
+    authors: "A AlSobeh, A Shatnawi, A Magableh",
+    venue: "Information 16(12), 1048, Scopus Q2",
+    type: "journal",
+    link: "https://doi.org/10.3390/info16121048",
+  },
+  {
+    year: 2025,
+    title: "LinguTimeX: A Framework for Multilingual CTC Detection Using Explainable AI and Natural Language Processing",
+    authors: "O Darwish, S Al-Eidi, A Al-Shorman, M Maabreh, A Alsobeh, Y Tashtoush, P Zahariev",
+    venue: "CMC-Computers, Materials & Continua, Q1",
+    type: "journal",
+  },
+  {
+    year: 2025,
+    title: "Evaluating Deep Learning Change Detection in Aerial Imagery: A New Multi-Metric Benchmarking Framework",
+    authors: "AAA Hassouna, MB Ismail, AS Hassan, H Ashqar, AMR Alsobeh, AA Hassan, M Elhenawy",
+    venue: "International Journal of Aerospace Engineering, Wiley, Scopus Q1",
+    type: "journal",
+  },
+  {
+    year: 2025,
+    title: "A Student-Centric Evaluation Survey to Explore the Impact of LLMs on UML Modeling",
+    authors: "B Al-Ahmad, A Alsobeh, O Meqdadi, N Shaikh",
+    venue: "Information 16(7), 565, Scopus Q2",
+    type: "journal",
+  },
+  {
+    year: 2025,
+    title: "Enhanced Detection of Intrusion Detection System in Cloud Networks Using Time-Aware and Deep Learning Techniques",
+    authors: "N Terawi, HI Ashqar, O Darwish, A Alsobeh, P Zahariev, Y Tashtoush",
+    venue: "Computers 14(7), 282, Scopus Q1",
+    type: "journal",
+  },
+  {
+    year: 2025,
+    title: "RADAR#: An Ensemble Approach for Radicalization Detection in Arabic Social Media Using Hybrid Deep Learning and Transformer Models",
+    authors: "EM Al-Shawakfa, AMR Alsobeh, S Omari, A Shatnawi",
+    venue: "Information 16(7), 522, Scopus Q2",
+    type: "journal",
+    link: "https://doi.org/10.3390/info16070522",
+  },
+  {
+    year: 2025,
+    title: "The Effectiveness of a Psychosocial Support-Based Program in Raising Legal Empowerment among Refugees in Jordan",
+    authors: "A Al-Sharifin, N Bahr, A Shatnawi, AMR AlSobeh",
+    venue: "Dirasat: Human and Social Sciences 52(1), 18-31, Q3",
+    type: "journal",
+  },
+  {
+    year: 2024,
+    title: "AI-Powered AOP: Enhancing Runtime Monitoring with Large Language Models and Statistical Learning",
+    authors: "A AlSobeh, A Shatnawi, B Al-Ahmad, A Aljmal, S Khamaiseh",
+    venue: "IJACSA, Scopus Q3",
+    type: "journal",
+  },
+  {
+    year: 2024,
+    title: "Enhancing Integration Testing Efficiency Through AI-Driven Combined Structural and Textual Class Coupling Metric",
+    authors: "I Alazzam, AMR AlSobeh, B Bani Melhem",
+    venue: "Online Journal of Communication and Media Technologies 14(4), e202460, ISI Q1",
+    type: "journal",
+  },
+  {
+    year: 2024,
+    title: "Android Malware Detection Using Time-Aware Machine Learning Approach",
+    authors: "AMR AlSobeh, K Gaber, MM Hammad, M Nuser, A Shatnawi",
+    venue: "Cluster Computing, ISI Q1",
+    type: "journal",
+  },
+  {
+    year: 2024,
+    title: "Beyond Word-Based Model Embeddings: Contextualized Representations for Enhanced Social Media Spam Detection",
+    authors: "S AlShattnawi, A Shatnawi, AMR AlSobeh, AA Magableh",
+    venue: "Applied Sciences 14(6), 2254, ISI Q1",
+    type: "journal",
+    link: "https://doi.org/10.3390/app14062254",
+  },
+  {
+    year: 2024,
+    title: "Emo-SL Framework: Emoji Sentiment Lexicon Using Text-Based Features and Machine Learning for Sentiment Analysis",
+    authors: "M Alfreihat, O Almousa, Y Tashtoush, A AlSobeh, K Mansour, H Migdady",
+    venue: "IEEE Access",
+    type: "journal",
+  },
+  {
+    year: 2024,
+    title: "Predictive Analytics in Mental Health: Leveraging LLM Embeddings and Machine Learning Models for Social Media Analysis",
+    authors: "A Radwan, M Amarneh, H Alawneh, HI Ashqar, A AlSobeh, A Magableh",
+    venue: "International Journal of Web Services Research (IJWSR), ISI Q1",
+    type: "journal",
+  },
+  {
+    year: 2023,
+    title: "BlockASP: A Framework for AOP-Based Model Checking Blockchain System",
+    authors: "AMR AlSobeh, AA Magableh",
+    venue: "IEEE Access 11, 115062-115075",
+    type: "journal",
+    link: "https://doi.org/10.1109/ACCESS.2023.3325060",
+  },
+  {
+    year: 2023,
+    title: "OSM: Leveraging Model Checking for Observing Dynamic Behaviors in Aspect-Oriented Applications",
+    authors: "AMR AlSobeh",
+    venue: "Online Journal of Communication and Media Technologies 13(4), e202355",
+    type: "journal",
+    link: "https://doi.org/10.30935/ojcmt/13771",
+  },
+  {
+    year: 2023,
+    title: "Cybersecurity Awareness Factors Among Adolescents in Jordan: Mediation Effect of Cyber Scale and Personal Factors",
+    authors: "AMR AlSobeh, I AlAzzam, AMJ Shatnawi, I Khasawneh",
+    venue: "Online Journal of Communication and Media Technologies 13(2), e202312",
+    type: "journal",
+  },
+  {
+    year: 2022,
+    title: "The Repercussions of the COVID-19 Pandemic on Higher Education and its Implications for Syrian Refugees Students",
+    authors: "A Alsobeh, A Aloudat",
+    venue: "Dirasat: Human and Social Sciences 49(5), 150-166",
+    type: "journal",
+    link: "https://doi.org/10.35516/hum.v49i5.2770",
+  },
+  {
+    year: 2022,
+    title: "The Effectiveness of a Program Based on Psychosocial Support in Raising Family Empowerment Among Refugees in Jordan",
+    authors: "AM Shatnawi, AM AlSobeh, EI AL-Mifleh, AF Migdady",
+    venue: "International Journal of Psychological and Educational Research 1(4)",
+    type: "journal",
+  },
+  {
+    year: 2021,
+    title: "A Cloud-Based IoT Smart Water Distribution Framework Utilizing BIP Component: Jordan As A Model",
+    authors: "S Alshattnawi, AMR AlSobeh",
+    venue: "International Journal of Cloud Computing, Inderscience, Scopus",
+    type: "journal",
+  },
+  {
+    year: 2021,
+    title: "High-Performance Implementation of Wideband Coherent Signal-Subspace (CSS) Based DOA Algorithm on FPGA",
+    authors: "A Jarrah, A Almomany, AMR AlSobeh, E Alqudah",
+    venue: "Journal of Circuits, Systems, and Computers, World Scientific, ISI",
+    type: "journal",
+  },
+  {
+    year: 2020,
+    title: "WeaveSim: A Scalable and Reusable Cloud Simulation Framework Leveraging Aspect-Oriented Programming",
+    authors: "AMR AlSobeh, S AlShattnawi, A Jarrah, MM Hammad",
+    venue: "Jordanian Journal of Computers and Information Technology 6(2), ISI",
+    type: "journal",
+  },
+  {
+    year: 2019,
+    title: "A Modular Cloud-Based Ontology Framework for Context-Aware EHR Services",
+    authors: "AMR AlSobeh, R Hammad, AK Al-Tamimi",
+    venue: "International Journal of Computer Applications in Technology 60(4), 339-350, Scopus",
+    type: "journal",
+  },
+  {
+    year: 2019,
+    title: "A National Framework for E-Health Data Collection in Jordan with Current Practices",
+    authors: "AMR AlSobeh, AF Klaib, A AlYahya",
+    venue: "International Journal of Computer Applications in Technology 59(1), 64-73, Scopus",
+    type: "journal",
+  },
+  {
+    year: 2019,
+    title: "An Evaluation of the Usage of Aspect Orientation and the Gap Between Academic Research and Industry Needs",
+    authors: "AA Magableh, AMR Alsobeh, AF Klaib",
+    venue: "Journal of Theoretical and Applied Information Technology, Scopus",
+    type: "journal",
+  },
+  {
+    year: 2019,
+    title: "Online Mobile-Based Personal Tour Application Using Artificial Bee Colony Optimization Algorithm",
+    authors: "S Alshattnawi, I Abu Doush, A Alsobeh",
+    venue: "Journal of Theoretical and Applied Information Technology, Scopus",
+    type: "journal",
+  },
+  {
+    year: 2019,
+    title: "Performance Enhancement of the Advanced Encryption Standard Via Pipelined Implementation",
+    authors: "MM Barhoush, NA Kofahi, KMO Nahar, AMR Alsobeh, A Jaradat, B Alomari",
+    venue: "Journal of Theoretical and Applied Information Technology 97(15), 4213-4226, Scopus",
+    type: "journal",
+  },
+  {
+    year: 2018,
+    title: "Runtime Reusable Weaving Model for Cloud Services Using Aspect-Oriented Programming: The Security-Related Aspect",
+    authors: "AMR Alsobeh, AAAR Magableh, EM AlSukhni",
+    venue: "International Journal of Web Services Research 15(1), 71-88, Thomson Reuters-ISI",
+    type: "journal",
+  },
+  {
+    year: 2018,
+    title: "Architectural Aspect-Aware Design for IoT Applications: Conceptual Proposal",
+    authors: "AMR AlSobeh, AA Magableh",
+    venue: "International Journal of Computer Science & Information Technology 10(6), 1-8",
+    type: "journal",
+  },
+  {
+    year: 2018,
+    title: "Securing Software Development Stages Using Aspect-Orientation Concepts",
+    authors: "AA Magableh, AMR AlSobeh",
+    venue: "International Journal of Software Engineering & Applications 9(6), 57-71, ISI",
+    type: "journal",
+  },
+  {
+    year: 2016,
+    title: "TransJ: An Abstract Independent-Framework for Weaving Crosscutting Concern into Distributed Transactions",
+    authors: "AMR AlSobeh, SW Clyde",
+    venue: "Journal of Computer Technology and Application 7(4), 173-195",
+    type: "journal",
+  },
+  {
+    year: 2012,
+    title: "Examining Web Search Trends Across Arab Countries",
+    authors: "M Al-Kabi, A Wahbeh, A Alsobeh, A Aleroud, I Alsmadi",
+    venue: "Arabian Journal for Science and Engineering 37(6), 1585-1593, Springer, ISI, Scopus",
+    type: "journal",
+  },
+  {
+    year: 2010,
+    title: "A Multilingual and Location Evaluation of Search Engines for Websites and Searched for Keywords",
+    authors: "A AlSobh, A Al Oroud, MN Al-Kabi, I AlSmadi",
+    venue: "Brazilian Journal of Information Science: research trends 4(1)",
+    type: "journal",
+  },
+];
+
+const conferences: Publication[] = [
+  {
+    year: 2026,
+    title: "Translator-Oriented AI for Medical Record Reconciliation (TOAI-MR)",
+    authors: "A AlSobeh, A Shatnawi, R Hammad",
+    venue: "SaTC 2026, Houston, Texas, March 24-27, 2026",
+    type: "conference",
   },
   {
     year: 2026,
-    title:
-      "LinguTimeX: a Framework for Multilingual CTC Detection Using Explainable AI and Natural Language Processing",
-    authors:
-      "O Darwish, S Al-Eidi, A Al-Shorman, M Maabreh, A Alsobeh, P Zahariev, et al.",
-    venue: "Computers, Materials & Continua 86 (1), 1",
+    title: "A Reproducible Framework for Institutional Domain Adaptation of LLMs via Supervised Fine-Tuning and Retrieval-Augmented Generation",
+    authors: "I Alsmadi, A AlSobeh",
+    venue: "AIS, Texas A&M San Antonio, 2026",
+    type: "conference",
+  },
+  {
+    year: 2026,
+    title: "CodeLLM-Auth: Multimodal Authorship Attribution and Verification via Supervised Contrastive Code Embeddings",
+    authors: "A AlSobeh, S Khamaiseh, D Middendorf, J Dziubinski",
+    venue: "Submitted to COMPSAC, 2026",
+    type: "conference",
   },
   {
     year: 2025,
-    title:
-      "AspectFL: Aspect-Oriented Programming for Trustworthy and Compliant Federated Learning Systems",
-    authors: "A AlSobeh, A Shatnawi, A Magableh",
-    venue: "Information 16 (12), 1048",
-  },
-  {
-    year: 2025,
-    title:
-      "ADT++: Advanced Adversarial Distributional Training with Class-Wise Robustness",
-    authors: "SY Khamaiseh, D Jost, A Alsobeh, A Al-Alaj, H Jiang",
-    venue:
-      "IEEE 12th International Conference on Data Science and Advanced Analytics",
-  },
-  {
-    year: 2025,
-    title:
-      "An Improved Tweet Classifier with a Hybrid Text and Graph-based Representation",
+    title: "An Improved Tweet Classifier with a Hybrid Text and Graph-based Representation",
     authors: "O Karajeh, L Abdullah, N Alsaedi, A Alsobeh, O Darwish",
-    venue:
-      "International Conference on Cybersecurity and AI-Based Systems (Cyber...)",
+    venue: "Cyber-AI 2025, Varna, Bulgaria, pp. 298-307",
+    type: "conference",
   },
   {
     year: 2025,
-    title:
-      "ShadowPlay: Engineering Defenses Against Role-Based Prompt Injection and Dependency Hallucination in LLM-Powered Development",
-    authors: "A AlSobeh, Z Gwarzo, A Shatnawi",
-    venue:
-      "International Conference on Cybersecurity and AI-Based Systems (Cyber...)",
+    title: "Background-Aware Instance Segmentation for Early Detection of E. coli and Salmonella in Time-Stamped Microscopy Images",
+    authors: "B Koirala, A AlSobeh, N Dhahir, A AbuGhazaleh",
+    venue: "24th International Conference on Machine Learning and Applications (AMLA), Dec 2025",
+    type: "conference",
   },
   {
     year: 2025,
-    title:
-      "XAIPath: Temporal-Environmental Explainable AI Framework for Co-Contaminated Food Pathogen Detection in Microscopic Imaging",
+    title: "XAIPath: Temporal-Environmental Explainable AI Framework for Co-Contaminated Food Pathogen Detection in Microscopic Imaging",
     authors: "A AlSobeh, A AbuGhazaleh, N Dhahir, M Rababa",
-    venue: "ICPP Companion 2025",
+    venue: "ICPP Companion '25, San Diego, CA, Sep 2025",
+    type: "conference",
   },
   {
     year: 2025,
-    title:
-      "Enhanced detection of intrusion detection system in cloud networks using time-aware and deep learning techniques",
-    authors:
-      "N Terawi, HI Ashqar, O Darwish, A Alsobeh, P Zahariev, Y Tashtoush",
-    venue: "Computers 14 (7), 282",
+    title: "ImagePatriot: Distribution-Based Image Immunization Against Diffusion-Based Editing",
+    authors: "S Khamaiseh, S Chiacchira, A Al-Alaj, A AlSobeh",
+    venue: "IEEE DSAA 2025, Oct 2025",
+    type: "conference",
+  },
+  {
+    year: 2025,
+    title: "ADT++: Advanced Adversarial Distributional Training with Class-wise Robustness",
+    authors: "S Khamaiseh, D Jost, A AlSobeh, H Jiang",
+    venue: "IEEE DSAA 2025, Oct 2025",
+    type: "conference",
   },
   {
     year: 2025,
     title: "MuAE: A Mutation Testing Framework for Evaluating Autoencoders",
     authors: "SY Khamaiseh, S Chiacchira, A Alsobeh, A Aljadayah",
-    venue: "IEEE COMPSAC 2025",
+    venue: "IEEE COMPSAC 2025, Toronto, pp. 1015-1020",
+    type: "conference",
   },
   {
     year: 2025,
-    title:
-      "Proactive detection of tax fraud using explainable AI techniques: A hybrid approach",
-    authors: "A AlSobeh, MF Abo El Rob, K Rouibah, A Shatnawi",
-    venue: "Issues in Information Systems 26 (3)",
+    title: "ShadowPlay: Engineering Defenses Against Role-Based Prompt Injection and Dependency Hallucination in LLM-Powered Development",
+    authors: "A AlSobeh, Z Gwarzo, A Shatnawi",
+    venue: "Cyber-AI 2025",
+    type: "conference",
   },
   {
     year: 2025,
-    title:
-      "A student-centric evaluation survey to explore the impact of LLMs on UML modeling",
-    authors: "B Al-Ahmad, A Alsobeh, O Meqdadi, N Shaikh",
-    venue: "Information 16 (7), 565",
+    title: "Proactive Detection of Tax Fraud Using Explainable AI Techniques: A Hybrid Approach",
+    authors: "A AlSobeh, M Rob, K Rouibah, A Shatnawi",
+    venue: "65th IACIS Annual Conference, Clearwater Beach, Florida, Oct 2025",
+    type: "conference",
   },
   {
     year: 2025,
-    title:
-      "RADAR#: An ensemble approach for radicalization detection in Arabic social media using hybrid deep learning and transformer models",
-    authors: "EM Al-Shawakfa, AMR Alsobeh, S Omari, A Shatnawi",
-    venue: "Information 16 (7), 522",
-  },
-  {
-    year: 2025,
-    title:
-      "Evaluating deep learning change detection in aerial imagery: A new multi-metric benchmarking framework",
-    authors:
-      "AAA Hassouna, MB Ismail, AS Hassan, H Ashqar, AMR Alsobeh, et al.",
-    venue: "Conference publication",
-  },
-  {
-    year: 2025,
-    title:
-      "Tailored large language models for spam detection: From model customization to benchmarking effectiveness",
+    title: "Tailored Large Language Models for Spam Detection: From Model Customization to Benchmarking Effectiveness",
     authors: "A Shatnawi, A AlSobeh, I Alsmadi, B Al-Ahmad",
-    venue: "Intelligent Cybersecurity Conference (ICSC), 264-271",
+    venue: "5th Intelligent Cybersecurity Conference (ICSC), Tampa, FL, pp. 264-271",
+    type: "conference",
   },
   {
     year: 2025,
-    title:
-      "Identifying the Origins of Business Data Breaches Through CTC Detection",
-    authors: "GL Frisbier, O Darwish, A Alsobeh, A Al-shorman",
-    venue: "Network and System Security (NSS 2024 Proceedings)",
-  },
-  {
-    year: 2025,
-    title:
-      "SlangLLM: Dynamic detection and contextual filtering of slang in NLP applications",
+    title: "SlangLLM: Dynamic Detection and Contextual Filtering of Slang in NLP Applications",
     authors: "L Patel, A Alsobeh",
-    venue: "Secure IoT, Assured and Trusted Cyberinfrastructure Conference",
+    venue: "1st International Conference on SATC, Dayton, OH, pp. 1-6",
+    type: "conference",
   },
   {
     year: 2025,
-    title:
-      "Proximity-Constrained Counterfactuals for Explainable Diabetes Risk Assessment",
-    authors: "MF Kabir, AM Mahakal, Y Wang, A AlSobeh, B Al-Ahmad, et al.",
-    venue: "Applied Computational Intelligence and Soft Computing 2025",
+    title: "A Multi-Objective Optimization Approach for Sustainable AI-Driven Entrepreneurship in Resilient Economies",
+    authors: "A AlSobeh, R AlKurdi",
+    venue: "8th International Conference on Entrepreneurship for Sustainability & Impact (ESI), 2025",
+    type: "conference",
+  },
+  {
+    year: 2025,
+    title: "ResiliAI: A Multi-Agent Reinforcement Learning Framework for AI-Driven Economic Shock Resilience and Adaptive Policy Simulation",
+    authors: "A AlSobeh, R AlKurdi",
+    venue: "8th International Conference on Entrepreneurship for Sustainability & Impact (ESI), 2025",
+    type: "conference",
   },
   {
     year: 2024,
-    title:
-      "AI-Powered AOP: Enhancing Runtime Monitoring with Large Language Models and Statistical Learning",
-    authors: "A AlSobeh, A Shatnawi, B Al-Ahmad, A Aljmal, S Khamaiseh",
-    venue: "IJACSA",
+    title: "Unmasking Media Illusion: Analytical Survey of Deepfake Video Detection and Emotional Insights",
+    authors: "A AlSobeh, A Franklin, B Woodward",
+    venue: "64th IACIS Annual Conference, Atlantic Beach, Florida",
+    type: "conference",
+    note: "Best Paper Award",
   },
   {
     year: 2024,
-    title:
-      "Enhancing integration testing efficiency through AI-driven combined structural and textual class coupling metric",
-    authors: "I Alazzam, AMR AlSobeh, BB Melhem",
-    venue:
-      "Online Journal of Communication and Media Technologies 14 (4), e202460",
+    title: "Identifying the Origins of Business Data Breaches Through CTC Detection",
+    authors: "GL Frisbier, O Darwish, A Alsobeh, A Al-shorman",
+    venue: "International Conference on Network and System Security (NSS), Springer, pp. 387-406",
+    type: "conference",
   },
   {
     year: 2024,
-    title:
-      "Enhancing Software Engineering Education through AI: An Empirical Study of Tree-Based Machine Learning for Defect Prediction",
-    authors: "E Alhazeem, A Alsobeh, B Al-Ahmad",
-    venue: "SIGITE '24",
-  },
-  {
-    year: 2024,
-    title:
-      "Unmasking Media Illusion: Analytical Survey of Deepfake Video Detection and Emotional Insights",
-    authors: "A Alsobeh, A Franklin, B Woodward, M Porche, J Siegelman",
-    venue: "Issues in Information Systems 25 (2)",
-  },
-  {
-    year: 2024,
-    title:
-      "Blockchain-Based National Digital Identity Framework–Case of Palestine",
+    title: "Blockchain-Based National Digital Identity Framework - Case of Palestine",
     authors: "FA Hasan, HI Ashqar, A AlSobeh, O Darwish",
-    venue: "International Conference on Intelligent Computing, Communication",
+    venue: "ICCNS 2024, Dubrovnik, Croatia, pp. 76-83",
+    type: "conference",
   },
   {
     year: 2024,
-    title:
-      "Vehicle Trajectory-Based Intersection Classification Using Deep Transfer Learning",
-    authors:
-      "A Kased, R Rabee, A Fahmy, H Mohamed, M Yacoub, M Elhenawy, et al.",
-    venue: "International Conference on Intelligent Computing, Communication",
-  },
-  {
-    year: 2024,
-    title:
-      "A Secure IoT Framework for Remote Health Monitoring Using Fog Computing",
+    title: "A Secure IoT Framework for Remote Health Monitoring Using Fog Computing",
     authors: "A Harasees, B Al-Ahmad, A Alsobeh, A Abuhussein",
-    venue: "International Conference on Intelligent Computing, Communication",
+    venue: "ICCNS 2024, Dubrovnik, Croatia, pp. 17-24",
+    type: "conference",
   },
   {
     year: 2024,
-    title:
-      "The Effectiveness of a Training Program Based on Health Education to Improve Health Empowerment Level among Refugees in Jordan",
-    authors: "A AlSharifin, M Megdadi, A Shatnawi, A AlSobeh, A Akkawi",
-    venue: "Dirasat: Human and Social Sciences 51 (4), 204-222",
+    title: "Vehicle Trajectory-Based Intersection Classification Using Deep Transfer Learning",
+    authors: "A Kased, R Rabee, A Fahmy, H Mohamed, M Yacoub, M Elhenawy, HI Ashqar, A Alsobeh, et al.",
+    venue: "ICCNS 2024, Dubrovnik, Croatia, pp. 158-165",
+    type: "conference",
   },
   {
     year: 2024,
-    title:
-      "Android malware detection using time-aware machine learning approach",
-    authors: "AMR AlSobeh, K Gaber, MM Hammad, M Nuser, A Shatnawi",
-    venue: "Cluster Computing",
-  },
-  {
-    year: 2024,
-    title:
-      "LinguTimeX: Explainable AI of natural language detection in leakage information with covert timing channels",
-    authors:
-      "O Darwish, S Al-Eidi, A Al-Shorman, A AlSobeh, M Maabreh, Y Tashtoush",
-    venue: "Preprint/Conference version",
-  },
-  {
-    year: 2024,
-    title:
-      "A Survey Analysis of Internet of Things (IoT) Education Across the Top 25 Universities in the United States",
-    authors: "O Darwish, A Al-shorman, A AlSobeh, Y Tashtoush",
-    venue: "Advanced Information Networking and Applications 203, 497-510",
-  },
-  {
-    year: 2024,
-    title:
-      "Emo-SL Framework: Emoji Sentiment Lexicon Using Text-Based Features and Machine Learning for Sentiment Analysis",
-    authors: "A Manar, A Omar, T Yahya, AS Anas, M Khalid, M Hazem",
-    venue: "IEEE Access 12, 81793-81812",
-  },
-  {
-    year: 2024,
-    title:
-      "A Generic and Extendable Framework for Benchmarking and Assessing the Change Detection Models",
-    authors:
-      "AAA Hassouna, MB Ismail, A Alqahtani, N Alqahtani, AS Hassan, et al.",
-    venue: "Preprints",
-  },
-  {
-    year: 2024,
-    title:
-      "Beyond Word-Based Model Embeddings: Contextualized Representations for Enhanced Social Media Spam Detection",
-    authors: "S AlShattnawi, A Shtanawi, A Alsobeh, A Magableh",
-    venue: "Applied Sciences 14 (6)",
-  },
-  {
-    year: 2024,
-    title:
-      "Predictive Analytics in Mental Health Leveraging LLM Embeddings and Machine Learning Models for Social Media Analysis",
-    authors: "A Radwan, M Amarneh, H Alawneh, HI Ashqar, A AlSobeh, et al.",
-    venue: "IJWSR 21 (1)",
-  },
-  {
-    year: 2024,
-    title:
-      "فاعلية برنامج يستند إلى الدعم النفسي الاجتماعي في رفع مستوى التمكين القانوني لدى اللاجئين في الأردن",
-    authors: "A Al-Shraifin, N Bahr, A Shatnawi, AMR AlSobeh",
-    venue: "Dirasat: Human and Social Sciences 52 (1), 18-31",
-  },
-  {
-    year: 2024,
-    title:
-      "The Effectiveness of a Psychosocial Support-Based Program in Raising Legal Empowerment among Refugees In Jordan",
-    authors: "A Al-Shraifin, N Bahr, A Shatnawi, AMR AlSobeh",
-    venue: "Dirasat: Human and Social Sciences",
-  },
-  {
-    year: 2024,
-    title:
-      "The effectiveness of a counseling program based on psychosocial support to raise the level of economic empowerment among refugees",
-    authors: "A Al-Shraifin, RB Arabiat, A Shatnawi, A AlSobeh, N Bahr",
-    venue: "Current Psychology 43 (4), 3101-3110",
-  },
-  {
-    year: 2024,
-    title:
-      "A cloud-based IoT smart water distribution framework utilising BIP component: Jordan as a model",
-    authors: "S Alshattnawi, A Alsobeh",
-    venue: "International Journal of Cloud Computing 13 (1), 25-41",
+    title: "A Survey Analysis of Internet of Things (IoT) Education Across the Top 25 Universities in the United States",
+    authors: "O Darwish, A Al-Shorman, A AlSobeh, Y Tashtoush",
+    venue: "AINA 2024, Lecture Notes on Data Engineering and Communications Technologies 203, Springer",
+    type: "conference",
   },
   {
     year: 2023,
-    title:
-      "OSM: Leveraging model checking for observing dynamic behaviors in aspect-oriented applications",
-    authors: "A Alsobeh",
-    venue:
-      "Online Journal of Communication and Media Technologies 13 (4), 1-18",
-    link: "https://doi.org/10.30935/ojcmt/13771",
-  },
-  {
-    year: 2023,
-    title:
-      "Cybersecurity awareness factors among adolescents in Jordan: Mediation effect of cyber scale and personal factors",
-    authors: "AMR AlSobeh, I AlAzzam, AMJ Shatnawi, I Khasawneh",
-    venue:
-      "Online Journal of Communication and Media Technologies 13 (2), e202312",
-  },
-  {
-    year: 2023,
-    title:
-      "BlockASP: A Framework for AOP-based Model Checking Blockchain System",
-    authors: "AMR AlSobeh, AA Magableh",
-    venue: "IEEE Access 11, 115062-115075",
-    link: "https://doi.org/10.1109/ACCESS.2023.3325060",
-  },
-  {
-    year: 2023,
-    title:
-      "AI as a Partner in Learning: A Novel Student-in-the-Loop Framework for Enhanced Student Engagement and Outcomes in Higher Education",
+    title: "AI as a Partner in Learning: A Novel Student-in-the-Loop Framework for Enhanced Student Engagement and Outcomes in Higher Education",
     authors: "A AlSobeh, B Woodward",
-    venue: "SIGITE 2023 Proceedings",
+    venue: "SIGITE '23, Marietta, GA, ACM",
+    type: "conference",
+    link: "https://doi.org/10.1145/3585059.3611405",
   },
   {
     year: 2023,
-    title:
-      "Integrating Data-Driven Security, Model Checking, and Self-Adaptation for IoT Systems using BIP Components: A Conceptual Proposal Model",
+    title: "Integrating Data-Driven Security, Model Checking, and Self-Adaptation for IoT Systems using BIP Components: A Conceptual Proposal Model",
     authors: "A AlSobeh, A Shatnawi",
-    venue: "Lecture Notes in Networks and Systems",
-  },
-  {
-    year: 2022,
-    title:
-      "The effectiveness of a program based on psychosocial support in raising the level of family empowerment among refugees in Jordan",
-    authors: "AM Shatnawi, AM AlSobeh, EI AL-Mifleh, AF Migdady",
-    venue: "International Journal of Psychological and Educational Research",
-  },
-  {
-    year: 2022,
-    title:
-      "The Repercussions of the COVID-19 Pandemic on Higher Education and its implications for Syrian Refugees Students",
-    authors: "A Alsobeh, A Aloudat",
-    venue: "Dirasat: Human and Social Sciences 49 (5), 150-166",
-  },
-  {
-    year: 2022,
-    title:
-      "فاعلية برنامج تدريبي مستند إلى الدعم النفسي الاجتماعي في رفع مستوى التمكين النفسي لدى اللاجئين",
-    authors:
-      "NS AL-Refai, NA Albahr, AF Migdady, EI AL-Mifleh, A Shatnawi, et al.",
-    venue:
-      "International Journal of Psychological and Educational Research 1 (2)",
-  },
-  {
-    year: 2022,
-    title: "CRIOS Collaborative Research and Innovation Online Software Tool",
-    authors: "AS Fadi Yamout, Rubén Fuentes-Fernández, Anas Al-Sobeh",
-    venue: "Zenodo",
-  },
-  {
-    year: 2022,
-    title:
-      "Beyond the partnership debate: Localizing knowledge production in refugee and forced migration studies",
-    authors: "R Shivakoti, J Milner",
-    venue: "Journal of Refugee Studies 35 (2), 805-826",
-  },
-  {
-    year: 2022,
-    title:
-      "High-performance implementation of wideband coherent signal-subspace (CSS)-Based DOA algorithm on FPGA",
-    authors: "A Jarrah, A Almomany, AMR Alsobeh, E Alqudah",
-    venue: "Journal of Circuits, Systems and Computers 30 (11), 2150196",
-  },
-  {
-    year: 2021,
-    title: "Cultural Drivers of Radicalization",
-    authors: "R Al-Maqableh, A Al-Sobeh, A Akkawi",
-    venue: "Research contribution",
-  },
-  {
-    year: 2020,
-    title:
-      "WeaveSim: A scalable and reusable cloud simulation framework leveraging aspect-oriented programming",
-    authors: "AMR AlSobeh, S AlShattnawi, A Jarrah, MM Hammad",
-    venue: "Jordanian Journal of Computers and Information Technology 6 (2)",
+    venue: "ACR'23, Orlando, Florida, Springer LNNS",
+    type: "conference",
   },
   {
     year: 2019,
-    title:
-      "An evaluation of the usage of aspect orientation and the gap between academic research and industry needs",
-    authors: "AWSA Magableh, AMR Alsobeh, AF Klaib",
-    venue:
-      "Journal of Theoretical and Applied Information Technology 97 (19), 5146-5165",
-  },
-  {
-    year: 2019,
-    title:
-      "Performance Enhancement of the Advanced Encryption Standard via Pipelined Implementation",
-    authors:
-      "MM Barhoush, NA Kofahi, KMO Nahar, AMR Alsobeh, A Jaradat, et al.",
-    venue:
-      "Journal of Theoretical and Applied Information Technology 97 (15), 4213-4226",
-  },
-  {
-    year: 2019,
-    title:
-      "Application of cellular automata for modeling and review of methods of movement of a group of people",
-    authors:
-      "MA Kantureyeva, JA Tussupov, FA Murzin, AI Uspanova, AA Abisheva, et al.",
-    venue:
-      "Journal of Theoretical and Applied Information Technology 97 (15), 4000-4010",
-  },
-  {
-    year: 2019,
-    title: "A survey on parallel join algorithms using MapReduce on Hadoop",
+    title: "A Survey on Parallel Join Algorithms Using MapReduce on Hadoop",
     authors: "MM Barhoush, AM AlSobeh, A Al Rawashdeh",
-    venue: "IEEE Jordan International Joint Conference",
-  },
-  {
-    year: 2019,
-    title:
-      "Online mobile-based personal tour application using artificial bee colony optimization algorithm",
-    authors: "S Alshattnawi, I Abu Doush, A Alsobeh",
-    venue:
-      "Journal of Theoretical and Applied Information Technology 97 (17), 4565-4578",
-  },
-  {
-    year: 2019,
-    title:
-      "A modular cloud-based ontology framework for context-aware EHR services",
-    authors: "AMR AlSobeh, R Hammad, AK Al-Tamimi",
-    venue:
-      "International Journal of Computer Applications in Technology 60 (4), 339-350",
-  },
-  {
-    year: 2019,
-    title:
-      "A national framework for e-health data collection in Jordan with current practices",
-    authors: "AMR AlSobeh, AF Klaib, A AlYahya",
-    venue:
-      "International Journal of Computer Applications in Technology 59 (1), 64-73",
+    venue: "IEEE Jordan International Joint Conference on EE and IT (JEEIT), pp. 381-388",
+    type: "conference",
   },
   {
     year: 2018,
-    title:
-      "Architectural aspect-aware design for IoT applications: conceptual proposal",
+    title: "An Aspect-Oriented with BIP Components for Better Crosscutting Concerns Modernization In IoT Applications",
     authors: "AMR AlSobeh, AA Magableh",
-    venue: "International Journal of Computer Science & Information Technology",
+    venue: "CSEN-2018, Dubai, UAE, pp. 21-31",
+    type: "conference",
   },
   {
     year: 2018,
-    title:
-      "Securing software development stages using aspect-orientation concepts",
-    authors: "AA Magableh, AMR Al Sobeh",
-    venue: "International Journal of Software Engineering & Applications 9 (6)",
-  },
-  {
-    year: 2018,
-    title: "Aspect-oriented software security development life cycle (AOSSDLC)",
+    title: "Aspect-Oriented Software Security Development Life Cycle (AOSSDLC)",
     authors: "AA Magableh, AMR AlSobeh",
-    venue: "CS & IT Conference Proceedings",
-  },
-  {
-    year: 2018,
-    title:
-      "An aspect-oriented with BIP components for better crosscutting concerns modernization in IoT applications",
-    authors: "AMR AlSobeh, AA Magableh",
-    venue: "CS & IT Conference Proceedings 8 (12)",
-  },
-  {
-    year: 2018,
-    title:
-      "Runtime reusable weaving model for cloud services using aspect-oriented programming: the security-related aspect",
-    authors: "AMR Alsobeh, AAAR Magableh, EM AlSukhni",
-    venue: "International Journal of Web Services Research 15 (1), 71-88",
-  },
-  {
-    year: 2017,
-    title:
-      "Computer Science and Information Technology (CoSIT-2017 Proceedings)",
-    authors: "D Nagamalai, N Meghanathan",
-    venue: "Conference Proceedings",
+    venue: "CSEN-2018, Dubai, UAE, pp. 33-47",
+    type: "conference",
   },
   {
     year: 2016,
-    title:
-      "Transaction-aware aspects with TransJ: An initial empirical study to demonstrate improvement in reusability",
+    title: "Transaction-Aware Aspects with TransJ: Initial Experiment Show Promising Improvements in Reusability of Distributed Transactions",
     authors: "AMR AlSobeh, SW Clyde",
-    venue: "ICSEA 2016",
-  },
-  {
-    year: 2016,
-    title:
-      "TransJ: An abstract independent-framework for weaving crosscutting concern into distributed transactions",
-    authors: "AMR AlSobeh, SW Clyde",
-    venue: "Comput. Technol. Appl. 7 (4), 173",
-  },
-  {
-    year: 2015,
-    title:
-      "Weaving Crosscutting Concerns into Distributed Transactions in Aspect",
-    authors: "A Alsobeh, S Clyde",
-    venue: "Research manuscript",
-  },
-  {
-    year: 2015,
-    title:
-      "Improving reuse of distributed transaction software with transaction-aware aspects",
-    authors: "AA AlSobeh",
-    venue: "Doctoral dissertation",
+    venue: "ICSEA 2016, Rome, Italy",
+    type: "conference",
   },
   {
     year: 2014,
-    title: "A Unified Conceptual Model for Distributed Transactions",
-    authors: "A Alsobeh",
-    venue: "Research manuscript",
-  },
-  {
-    year: 2014,
-    title:
-      "Unified Conceptual Model for Joinpoints in Distributed Transactions",
-    authors: "AMR AlSobeh, S Clyde",
-    venue: "ICSEA 2014",
-  },
-  {
-    year: 2012,
-    title: "Examining web search trends across Arab countries",
-    authors: "M Al-Kabi, A Wahbeh, A Alsobeh, A Ale’roud, I Alsmadi",
-    venue: "Arabian Journal for Science and Engineering 37 (6), 1585-1593",
-  },
-  {
-    year: 2011,
-    title:
-      "A multilingual and location evaluation of search engines for websites and searched for keywords",
-    authors: "A AlSobh, A Al Oroud, MN Al-Kabi, I AlSmadi",
-    venue: "Brazilian Journal of Information Science: research trends 4 (1)",
-  },
-  {
-    year: 2005,
-    title:
-      "Simulating the Field: How to Grow Plants in Soil Columns in the Greenhouse",
-    authors: "JK Chard, B Bugbee",
-    venue: "Research contribution",
+    title: "Unified Conceptual Model for Joinpoints in Distributed Transactions",
+    authors: "AMR AlSobeh, SW Clyde",
+    venue: "ICSEA'14, Nice, France, pp. 8-15",
+    type: "conference",
   },
 ];
 
+const allPublications = [...journals, ...conferences];
+
 export default function PublicationsSection() {
   const [filter, setFilter] = useState<string>("all");
+  const [typeFilter, setTypeFilter] = useState<"all" | "journal" | "conference">("all");
 
   const years = useMemo(
     () =>
-      Array.from(new Set(publications.map((p) => p.year.toString()))).sort(
+      Array.from(new Set(allPublications.map((p) => p.year.toString()))).sort(
         (a, b) => Number(b) - Number(a),
       ),
     [],
   );
 
-  const filteredPublications =
-    filter === "all"
-      ? publications
-      : publications.filter((pub) => pub.year.toString() === filter);
+  const filteredPublications = useMemo(() => {
+    let pubs = allPublications;
+    if (typeFilter !== "all") {
+      pubs = pubs.filter((p) => p.type === typeFilter);
+    }
+    if (filter !== "all") {
+      pubs = pubs.filter((p) => p.year.toString() === filter);
+    }
+    return pubs.sort((a, b) => b.year - a.year);
+  }, [filter, typeFilter]);
 
   return (
     <section id="publications" className="section-shell bg-background">
@@ -550,21 +501,52 @@ export default function PublicationsSection() {
         <div className="section-heading">
           <h2>Publications</h2>
           <p>
-            Complete publication list added to the website tab, organized by
-            year.
+            50+ peer-reviewed papers published in leading Q1/Q2 venues including
+            IEEE Access, Springer, Wiley, and ACM.
           </p>
         </div>
 
-        <div className="mb-10 flex flex-wrap justify-center gap-2">
+        {/* Type filter */}
+        <div className="mb-4 flex flex-wrap justify-center gap-2">
           <Button
+            variant={typeFilter === "all" ? "default" : "outline"}
+            onClick={() => setTypeFilter("all")}
+            className="gap-2"
+          >
+            <BookOpen size={16} />
+            All ({allPublications.length})
+          </Button>
+          <Button
+            variant={typeFilter === "journal" ? "default" : "outline"}
+            onClick={() => setTypeFilter("journal")}
+            className="gap-2"
+          >
+            <FileText size={16} />
+            Journals ({journals.length})
+          </Button>
+          <Button
+            variant={typeFilter === "conference" ? "default" : "outline"}
+            onClick={() => setTypeFilter("conference")}
+            className="gap-2"
+          >
+            <BookOpen size={16} />
+            Conferences ({conferences.length})
+          </Button>
+        </div>
+
+        {/* Year filter */}
+        <div className="mb-8 flex flex-wrap justify-center gap-1.5">
+          <Button
+            size="sm"
             variant={filter === "all" ? "default" : "outline"}
             onClick={() => setFilter("all")}
           >
-            All
+            All Years
           </Button>
           {years.map((year) => (
             <Button
               key={year}
+              size="sm"
               variant={filter === year ? "default" : "outline"}
               onClick={() => setFilter(year)}
             >
@@ -573,29 +555,52 @@ export default function PublicationsSection() {
           ))}
         </div>
 
-        <div className="space-y-4">
-          {filteredPublications.map((pub) => (
+        <p className="mb-4 text-center text-sm text-muted-foreground">
+          Showing {filteredPublications.length} publication{filteredPublications.length !== 1 ? "s" : ""}
+        </p>
+
+        <div className="mx-auto max-w-5xl space-y-3">
+          {filteredPublications.map((pub, idx) => (
             <Card
-              key={`${pub.year}-${pub.title}`}
-              className="border-border/80 bg-card/90 shadow-sm"
+              key={`${pub.year}-${pub.title}-${idx}`}
+              className="pub-card border-border/60 shadow-sm"
             >
-              <CardContent className="p-5 md:p-6">
+              <CardContent className="p-4 md:p-5">
                 <div className="flex items-start gap-3">
-                  <div className="rounded-lg bg-primary/10 p-2">
-                    <FileText className="text-primary" size={20} />
+                  <div
+                    className={`mt-1 rounded-lg p-2 ${pub.type === "journal" ? "icon-blue" : "icon-emerald"}`}
+                  >
+                    {pub.type === "journal" ? (
+                      <FileText size={18} />
+                    ) : (
+                      <BookOpen size={18} />
+                    )}
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-base font-semibold text-foreground md:text-lg">
-                      {pub.title}
-                    </h3>
-                    <p className="mt-1 text-sm text-muted-foreground">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start gap-2">
+                      <h3 className="text-sm font-semibold text-foreground md:text-base leading-snug">
+                        {pub.title}
+                      </h3>
+                      {pub.note && (
+                        <span className="badge-amber flex-shrink-0 rounded-full px-2 py-0.5 text-xs font-semibold flex items-center gap-1">
+                          <Award size={12} />
+                          {pub.note}
+                        </span>
+                      )}
+                    </div>
+                    <p className="mt-1 text-xs text-muted-foreground md:text-sm">
                       {pub.authors}
                     </p>
-                    <p className="mt-2 text-sm text-foreground/90">
+                    <p className="mt-1 text-xs font-medium text-foreground/80 md:text-sm">
                       {pub.venue}
                     </p>
-                    <div className="mt-3 flex items-center gap-3 text-sm text-muted-foreground">
-                      <span>{pub.year}</span>
+                    <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
+                      <span className={`rounded px-1.5 py-0.5 font-semibold ${pub.type === "journal" ? "badge-blue" : "badge-emerald"}`}>
+                        {pub.year}
+                      </span>
+                      <span className="rounded px-1.5 py-0.5 text-xs badge-violet">
+                        {pub.type === "journal" ? "Journal" : "Conference"}
+                      </span>
                       {pub.link && (
                         <a
                           href={pub.link}
@@ -603,8 +608,8 @@ export default function PublicationsSection() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1 text-primary hover:underline"
                         >
-                          <ExternalLink size={14} />
-                          Link
+                          <ExternalLink size={12} />
+                          DOI
                         </a>
                       )}
                     </div>

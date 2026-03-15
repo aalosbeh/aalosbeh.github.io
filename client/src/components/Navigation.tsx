@@ -11,6 +11,7 @@ export default function Navigation() {
     { label: "Research", href: "#research" },
     { label: "Publications", href: "#publications" },
     { label: "Projects", href: "#projects" },
+    { label: "Teaching", href: "#teaching" },
     { label: "Awards", href: "#awards" },
     { label: "Contact", href: "#contact" },
   ];
@@ -27,22 +28,23 @@ export default function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-primary/10 bg-background/90 shadow-sm backdrop-blur-md">
       <div className="container">
         <div className="flex items-center justify-between h-16">
-          {/* Logo/Name */}
           <button
             onClick={() => scrollToSection("#home")}
-            className="text-lg md:text-xl font-semibold tracking-wide text-foreground transition-colors hover:text-primary"
+            className="text-lg font-semibold tracking-wide text-foreground transition-colors hover:text-primary"
           >
-            Dr. Anas AlSobeh
+            <span className="hidden sm:inline">Dr. Anas AlSobeh</span>
+            <span className="sm:hidden">A. AlSobeh</span>
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1 rounded-full border border-border/70 bg-card/70 px-2 py-1">
+          <div className="hidden lg:flex items-center gap-0.5 rounded-full border border-border/70 bg-card/70 px-1.5 py-1">
             {navItems.map((item) => (
               <Button
                 key={item.href}
                 variant="ghost"
+                size="sm"
                 onClick={() => scrollToSection(item.href)}
-                className="text-foreground hover:text-primary hover:bg-primary/5"
+                className="text-foreground hover:text-primary hover:bg-primary/5 text-sm px-3"
               >
                 {item.label}
               </Button>
@@ -52,7 +54,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+            className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -61,12 +63,13 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border/70">
-            <div className="flex flex-col gap-2">
+          <div className="lg:hidden py-3 border-t border-border/70">
+            <div className="grid grid-cols-2 gap-1">
               {navItems.map((item) => (
                 <Button
                   key={item.href}
                   variant="ghost"
+                  size="sm"
                   onClick={() => scrollToSection(item.href)}
                   className="justify-start text-foreground hover:text-primary"
                 >
@@ -80,4 +83,3 @@ export default function Navigation() {
     </nav>
   );
 }
-

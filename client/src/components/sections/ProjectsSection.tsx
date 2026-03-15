@@ -1,164 +1,226 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, Calendar, Users } from "lucide-react";
 
+const piProjects = [
+  {
+    title: "Enhancing Food Safety: Rapid Detection of Salmonella in Onions Using Microscopic Imaging and AI",
+    funding: "USDA-NIFA",
+    budget: "$150,000",
+    period: "2024 - 2026",
+    description: "Capacity Building Grants for Non-Land Grant Colleges of Agriculture. Grant No. 2024-70001-43667.",
+    color: "card-accent-blue",
+  },
+  {
+    title: "RAISD - Reshaping Attention and Inclusion Strategies for Distinctively Vulnerable People Among the Forcibly Displaced",
+    funding: "European Union, Horizon 2020 (H-2020)",
+    budget: "\u20AC2,662,128",
+    period: "2019 - 2023",
+    description: "Large-scale EU-funded project addressing vulnerabilities among forcibly displaced populations.",
+    color: "card-accent-emerald",
+  },
+  {
+    title: "Psychosocial Support and Trauma Work in Jordan",
+    funding: "Deutsche Gesellschaft fur Internationale Zusammenarbeit (GIZ) GmbH",
+    budget: "\u20AC121,677",
+    period: "2019 - 2021",
+    description: "Certified Advanced Training on Community-Based Psychosocial Support in the Context of Forced Migration.",
+    color: "card-accent-violet",
+  },
+  {
+    title: "YUCloud - Toward Innovative Design an Interactive, Secure, Learning and Research Cloud Environment",
+    funding: "Yarmouk University",
+    budget: "$60,846",
+    period: "2018 - 2020",
+    description: "Design and implementation of a secure cloud-based learning and research environment.",
+    color: "card-accent-amber",
+  },
+  {
+    title: "SWDS - Design of Smart Water Distribution System Based on Cloud Computing and IoT",
+    funding: "Yarmouk University",
+    budget: "$2,820",
+    period: "2018 - 2019",
+    description: "Cloud computing and Internet of Things-based smart water distribution system design.",
+    color: "card-accent-teal",
+  },
+  {
+    title: "PFISR - Providing Fundamental ICT Skills for Syrian Refugees",
+    funding: "European Union, HOPES-MADAD",
+    budget: "\u20AC53,375",
+    period: "2017 - 2019",
+    description: "Providing fundamental ICT skills training for Syrian refugees.",
+    color: "card-accent-rose",
+  },
+  {
+    title: "TEFSR - Transferring E-Commerce Fundamentals for Syrian Refugees",
+    funding: "European Union, HOPES-MADAD",
+    budget: "\u20AC39,250",
+    period: "2017 - 2019",
+    description: "E-commerce education and training program for Syrian refugees.",
+    color: "card-accent-blue",
+  },
+];
+
+const copiProjects = [
+  {
+    title: "PIANO - Pharmaceutical Initiative for the Medicinal Plants of the Middle East in Research and Teaching",
+    funding: "DAAD (German Academic Exchange Service)",
+    budget: "\u20AC198,780",
+    period: "2021 - 2022",
+    color: "card-accent-emerald",
+  },
+  {
+    title: "JUICEE - Developing Jordanian Universities' Innovation Capacities and Entrepreneurship Education",
+    funding: "DAAD (German Academic Exchange Service)",
+    budget: "\u20AC225,150",
+    period: "2021 - 2022",
+    color: "card-accent-violet",
+  },
+  {
+    title: "LSFR - Learning & Development for a Sustainable Future for Refugees & Host Communities",
+    funding: "Nuffic (Orange Knowledge Programme)",
+    budget: "\u20AC531,778",
+    period: "2020 - 2022",
+    color: "card-accent-amber",
+  },
+  {
+    title: "NeuCARE - Neurodevelopmental Care for Refugees",
+    funding: "European Union, Erasmus+ Programme",
+    budget: "\u20AC668,750",
+    period: "2019 - 2022",
+    color: "card-accent-rose",
+  },
+];
+
+const pendingProjects = [
+  {
+    title: "AI Vigilance: Deciphering the Surveillance Apparatus and its Societal Implications for Ethics, Privacy, and Racial Justice",
+    funding: "National Endowment for the Humanities",
+    budget: "$149,957",
+    role: "PI",
+  },
+  {
+    title: "Developing and Implementing AI-Enhanced Virtual Reality Training: A Multi-Disciplinary Approach",
+    funding: "Department of Justice, Bureau of Justice Assistant",
+    budget: "$4,000,000",
+    role: "Co-PI",
+  },
+];
+
 export default function ProjectsSection() {
-  const projects = [
-    {
-      title: "AI-Powered Salmonella Detection in Onions",
-      role: "Principal Investigator (PI)",
-      funding: "USDA-NIFA",
-      budget: "$60,000",
-      period: "2024 - 2026",
-      description: "Developing an AI-powered detection system for Salmonella in onions using microscopic imaging and deep learning techniques.",
-      grantNumber: "2024-70001-43667"
-    },
-    {
-      title: "RAISD - Reshaping Attention and Inclusion Strategies",
-      role: "Principal Investigator (PI)",
-      funding: "European Union, Horizon 2020",
-      budget: "€2,662,128",
-      period: "2019 - 2023",
-      description: "Reshaping attention and inclusion strategies for distinctively vulnerable people among the forcibly displaced."
-    },
-    {
-      title: "Psychosocial Support and Trauma Work in Jordan",
-      role: "Principal Investigator (PI)",
-      funding: "GIZ (Deutsche Gesellschaft für Internationale Zusammenarbeit)",
-      budget: "€121,677",
-      period: "2019 - 2021",
-      description: "Certified advanced training on community-based psychosocial support in the context of forced migration."
-    },
-    {
-      title: "YUCloud - Interactive, Secure Learning Environment",
-      role: "Principal Investigator (PI)",
-      funding: "Yarmouk University",
-      budget: "$60,846",
-      period: "2018 - 2020",
-      description: "Toward innovative design of an interactive, secure, learning and research cloud environment."
-    },
-    {
-      title: "PIANO - Pharmaceutical Initiative for Medicinal Plants",
-      role: "Co-Principal Investigator (Co-PI)",
-      funding: "DAAD (German Academic Exchange Service)",
-      budget: "€198,780",
-      period: "2021 - 2022",
-      description: "Pharmaceutical initiative for the medicinal plants of the Middle East in research and teaching."
-    },
-    {
-      title: "JUICEE - Jordanian Universities Innovation Capacities",
-      role: "Co-Principal Investigator (Co-PI)",
-      funding: "DAAD",
-      budget: "€225,150",
-      period: "2021 - 2022",
-      description: "Developing Jordanian Universities' Innovation Capacities and Entrepreneurship Education."
-    },
-    {
-      title: "LSFR - Learning & Development for Sustainable Future",
-      role: "Co-Principal Investigator (Co-PI)",
-      funding: "Nuffic (Orange Knowledge Programme)",
-      budget: "€531,778",
-      period: "2020 - 2022",
-      description: "Learning & development for a sustainable future for refugees & host communities to promote co-existence and socio-economic development."
-    },
-    {
-      title: "NeuCARE - Neurodevelopmental Care for Refugees",
-      role: "Co-Principal Investigator (Co-PI)",
-      funding: "European Union, Erasmus+",
-      budget: "€668,750",
-      period: "2019 - 2022",
-      description: "Neurodevelopmental care for refugees through capacity building in higher education."
-    },
-    {
-      title: "PFISR - ICT Skills for Syrian Refugees",
-      role: "Principal Investigator (PI)",
-      funding: "European Union, HOPES-MADAD",
-      budget: "€53,375",
-      period: "2017 - 2019",
-      description: "Providing fundamental ICT skills for Syrian refugees."
-    },
-    {
-      title: "TEFSR - E-Commerce for Syrian Refugees",
-      role: "Principal Investigator (PI)",
-      funding: "European Union, HOPES-MADAD",
-      budget: "€39,250",
-      period: "2017 - 2019",
-      description: "Transferring e-commerce fundamentals for Syrian refugees."
-    }
-  ];
-
   return (
-    <section id="projects" className="py-20 bg-muted/20">
+    <section id="projects" className="section-shell section-gradient-3">
       <div className="container">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Funded Research Projects</h2>
-            <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Over $3 million in research funding from prestigious organizations including USDA, EU, DAAD, GIZ, and Nuffic.
-            </p>
-          </div>
+        <div className="section-heading">
+          <h2>Funded Research Projects</h2>
+          <p>
+            Over $3 million in research funding from prestigious organizations
+            including USDA, EU Horizon 2020, DAAD, GIZ, Nuffic, and Erasmus+.
+          </p>
+        </div>
 
-          {/* Summary Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <Card>
-              <CardContent className="pt-6 text-center">
-                <DollarSign className="mx-auto text-primary mb-2" size={32} />
-                <div className="text-3xl font-bold text-foreground mb-1">$3M+</div>
-                <p className="text-muted-foreground">Total Funding</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="pt-6 text-center">
-                <Users className="mx-auto text-primary mb-2" size={32} />
-                <div className="text-3xl font-bold text-foreground mb-1">15+</div>
-                <p className="text-muted-foreground">Projects Led</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="pt-6 text-center">
-                <Calendar className="mx-auto text-primary mb-2" size={32} />
-                <div className="text-3xl font-bold text-foreground mb-1">8+</div>
-                <p className="text-muted-foreground">Years Active</p>
-              </CardContent>
-            </Card>
-          </div>
+        {/* Summary Stats */}
+        <div className="mx-auto mb-12 grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-3">
+          <Card className="stat-card border-border/60">
+            <CardContent className="pt-6 text-center">
+              <div className="icon-blue mx-auto mb-2 inline-flex rounded-full p-3">
+                <DollarSign size={28} />
+              </div>
+              <div className="text-3xl font-bold text-foreground">$3M+</div>
+              <p className="text-muted-foreground">Total Funding</p>
+            </CardContent>
+          </Card>
+          <Card className="stat-card border-border/60">
+            <CardContent className="pt-6 text-center">
+              <div className="icon-emerald mx-auto mb-2 inline-flex rounded-full p-3">
+                <Users size={28} />
+              </div>
+              <div className="text-3xl font-bold text-foreground">15+</div>
+              <p className="text-muted-foreground">Projects Led</p>
+            </CardContent>
+          </Card>
+          <Card className="stat-card border-border/60">
+            <CardContent className="pt-6 text-center">
+              <div className="icon-violet mx-auto mb-2 inline-flex rounded-full p-3">
+                <Calendar size={28} />
+              </div>
+              <div className="text-3xl font-bold text-foreground">8+</div>
+              <p className="text-muted-foreground">Years Active</p>
+            </CardContent>
+          </Card>
+        </div>
 
-          {/* Projects List */}
-          <div className="space-y-6">
-            {projects.map((project, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        {/* PI Projects */}
+        <div className="mx-auto max-w-5xl mb-12">
+          <h3 className="mb-6 text-xl font-bold text-foreground flex items-center gap-2">
+            <span className="badge-blue rounded-full px-3 py-1 text-sm">Principal Investigator (PI)</span>
+          </h3>
+          <div className="space-y-4">
+            {piProjects.map((project, index) => (
+              <Card key={index} className={`${project.color} transition hover:shadow-md`}>
+                <CardContent className="p-5">
+                  <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                     <div className="flex-1">
-                      <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                          project.role === "Principal Investigator (PI)" 
-                            ? "bg-primary/10 text-primary" 
-                            : "bg-accent/10 text-accent"
-                        }`}>
-                          {project.role}
-                        </span>
-                      </div>
+                      <h4 className="text-base font-semibold text-foreground md:text-lg">
+                        {project.title}
+                      </h4>
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        {project.description}
+                      </p>
+                      <p className="mt-2 text-sm">
+                        <span className="font-medium text-foreground/80">Funding:</span>{" "}
+                        <span className="text-muted-foreground">{project.funding}</span>
+                      </p>
                     </div>
-                    <div className="text-right">
-                      <div className="text-2xl font-bold text-primary mb-1">{project.budget}</div>
+                    <div className="text-right flex-shrink-0">
+                      <div className="text-xl font-bold text-primary">{project.budget}</div>
                       <div className="text-sm text-muted-foreground">{project.period}</div>
                     </div>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-3">{project.description}</p>
-                  <div className="flex flex-wrap items-center gap-2 text-sm">
-                    <span className="font-medium text-foreground">Funding Agency:</span>
-                    <span className="text-muted-foreground">{project.funding}</span>
-                    {project.grantNumber && (
-                      <>
-                        <span className="text-muted-foreground">•</span>
-                        <span className="text-muted-foreground">Grant #{project.grantNumber}</span>
-                      </>
-                    )}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Co-PI Projects */}
+        <div className="mx-auto max-w-5xl mb-12">
+          <h3 className="mb-6 text-xl font-bold text-foreground flex items-center gap-2">
+            <span className="badge-emerald rounded-full px-3 py-1 text-sm">Co-Principal Investigator (Co-PI)</span>
+          </h3>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {copiProjects.map((project, index) => (
+              <Card key={index} className={`${project.color} transition hover:shadow-md`}>
+                <CardContent className="p-5">
+                  <h4 className="text-base font-semibold text-foreground">
+                    {project.title}
+                  </h4>
+                  <p className="mt-2 text-sm text-muted-foreground">{project.funding}</p>
+                  <div className="mt-3 flex items-center justify-between">
+                    <span className="text-lg font-bold text-primary">{project.budget}</span>
+                    <span className="text-sm text-muted-foreground">{project.period}</span>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Pending Projects */}
+        <div className="mx-auto max-w-5xl">
+          <h3 className="mb-6 text-xl font-bold text-foreground flex items-center gap-2">
+            <span className="badge-amber rounded-full px-3 py-1 text-sm">Pending Proposals</span>
+          </h3>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {pendingProjects.map((project, index) => (
+              <Card key={index} className="border-dashed border-border/80">
+                <CardContent className="p-5">
+                  <h4 className="text-base font-semibold text-foreground">
+                    {project.title}
+                  </h4>
+                  <p className="mt-2 text-sm text-muted-foreground">{project.funding}</p>
+                  <div className="mt-3 flex items-center justify-between">
+                    <span className="text-lg font-bold text-muted-foreground">{project.budget}</span>
+                    <span className="badge-violet rounded-full px-2 py-0.5 text-xs font-semibold">{project.role}</span>
                   </div>
                 </CardContent>
               </Card>
@@ -169,4 +231,3 @@ export default function ProjectsSection() {
     </section>
   );
 }
-
