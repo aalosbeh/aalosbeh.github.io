@@ -18,14 +18,14 @@
   ],
   "worksFor": {
     "@type": "EducationalOrganization",
-    "name": "Southern Illinois University Carbondale",
-    "url": "https://siu.edu",
+    "name": "Utah Valley University ",
+    "url": "https://uvu.edu",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "School of Computing",
-      "addressLocality": "Carbondale",
-      "addressRegion": "IL",
-      "postalCode": "62901",
+      "streetAddress": "Smith College of Engineering and Technology",
+      "addressLocality": "Orem",
+      "addressRegion": "UT",
+      "postalCode": "84405",
       "addressCountry": "USA"
     }
   },
